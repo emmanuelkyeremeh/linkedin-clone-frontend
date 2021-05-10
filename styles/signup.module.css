@@ -1,0 +1,84 @@
+.signupContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(243, 239, 239);
+  min-height: 100vh;
+}
+.signupHeader {
+  margin-bottom: -3rem;
+}
+.signupHeader_image {
+  object-fit: contain;
+}
+.signupSection h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 10px;
+  width: 400px;
+}
+.signupForm input:not([type="file"]) {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.signupFileUpload::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.signupFileUpload::before {
+  content: "Upload a profile picture (optional)";
+  display: inline-block;
+  color: white;
+  background-color: #2867b2;
+  border: none;
+  border-radius: 5px;
+  user-select: none;
+  -webkit-user-select: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.signupForm label {
+  color: gray;
+}
+.signupButton {
+  padding: 15px;
+  outline: 0;
+  border: none;
+  border-radius: 20px;
+  background-color: #2867b2;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.signupButton:focus {
+  outline: 0;
+}
+.signupButton:hover {
+  background-color: #18447a;
+}
+
+.signupLink {
+  text-decoration: none;
+  color: #18447a !important;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.signupSectionBottom span {
+  color: #18447a;
+  cursor: pointer;
+  font-weight: bolder;
+}
+.signupSectionBottom span:hover {
+  color: #0d2849;
+}
