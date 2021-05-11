@@ -54,7 +54,6 @@ const FeedNav = () => {
           OptionalIcon={null}
         />
         <FeedNavIcon
-          className={styles.feedNavAvatarContainer}
           Icon={<Avatar className={styles.FeedNav_Avatar} />}
           text="Me"
           OptionalIcon={<ArrowDropDownIcon />}

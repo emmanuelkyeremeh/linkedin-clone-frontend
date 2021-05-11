@@ -1,3 +1,7 @@
+.feedContainer {
+  background-color: rgb(240, 235, 235);
+  min-height: 100vh;
+}
 .feedNavContainer {
   display: flex;
   justify-content: space-around;
@@ -53,4 +57,68 @@
 .FeedNav_Avatar {
   width: 30px !important;
   height: 30px !important;
+}
+
+.feedBody {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3rem;
+}
+
+.feedLeftTop {
+  width: 200px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid rgb(224, 223, 223);
+}
+.feedLeftTop_image {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.feedLeftTop_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.feedLeftTop_header_image {
+  margin-top: -2rem;
+  width: 60px !important;
+  height: 60px !important;
+}
+.feedLeftTop_header_name {
+  padding-top: 1rem;
+  font-weight: 500;
+}
+.feedLeftTop_header_bio {
+  color: gray;
+  font-size: 0.8rem;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+.feedLeftTop_body {
+  font-size: 0.8rem;
+  color: gray;
+  margin-left: 20px;
+  padding: 5px;
+}
+.feedLeftTop_body p {
+  padding-bottom: 5px;
+}
+.feedLeftTop_hr {
+  background-color: rgb(224, 224, 224);
+  height: 1px;
+  border: none;
+}
+.feedLeftTop_footer {
+  margin-top: 1rem;
+  display: flex;
+  margin-left: 20px;
+  padding: 5px;
+}
+.feedLeftTop_footer p {
+  font-weight: 500;
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  padding-bottom: 5px;
 }
