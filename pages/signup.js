@@ -1,13 +1,15 @@
 import styles from "../styles/signup.module.css";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const signup = () => {
+  const router = useRouter();
   return (
     <div className={styles.signupContainer}>
       <header className={styles.signupHeader}>
         <Image
           className={styles.signupHeader_image}
-          src="/Linkedin-Logo.png"
+          src="/Linkedin-Logo.svg"
           width="150"
           height="150"
         />
@@ -33,7 +35,7 @@ const signup = () => {
         <br />
         <section className={styles.signupSectionBottom}>
           Already on Linkedin?{" "}
-          <span onClick={(e) => window.location.assign("/")}>Sign in</span>
+          <span onClick={(e) => router.push("/")}>Sign in</span>
         </section>
       </form>
     </div>

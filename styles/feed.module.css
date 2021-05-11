@@ -1,0 +1,56 @@
+.feedNavContainer {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 4px;
+  z-index: 1000;
+  background-color: white;
+  position: sticky;
+  top: 0;
+}
+.feedNav_Search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.feedNav_searchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(231, 231, 231);
+  border-radius: 5px;
+  padding: 3px;
+  padding-left: 10px;
+  margin-left: 10px;
+  height: 35px;
+}
+.feedNav_searchContainer input {
+  background: transparent;
+  outline: none;
+  border: none;
+  padding: 0;
+}
+.feedNav_searchContainer input:focus {
+  outline: 0;
+}
+.feedNavIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.feedNavIconContainer_text {
+  font-size: 0.8rem;
+  margin-top: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.feedNav_IconContainer {
+  display: flex;
+  justify-content: space-between;
+  flex: 0.6;
+}
+.FeedNav_Avatar {
+  width: 30px !important;
+  height: 30px !important;
+}

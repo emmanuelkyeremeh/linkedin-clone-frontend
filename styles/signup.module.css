@@ -32,7 +32,7 @@
   margin-bottom: 20px;
 }
 .signupFileUpload::-webkit-file-upload-button {
-  visibility: hidden;
+  display: none;
 }
 .signupFileUpload::before {
   content: "Upload a profile picture (optional)";
