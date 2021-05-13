@@ -371,3 +371,35 @@
   background: rgb(204, 218, 247);
   border: 2px solid var(--linkedin-blue);
 }
+.feedRight_top_middle {
+  width: 300px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 10px;
+}
+.feedRight_top_middle h2 {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.feedRight_top_middle h3 {
+  font-size: 0.8rem;
+}
+.feedRight_top_middle p {
+  font-size: 0.7rem;
+  color: gray;
+  margin-bottom: 10px;
+}
+.feedRight_bottom {
+  width: 300px;
+  background: white;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  height: 250px;
+  padding: 10px;
+}

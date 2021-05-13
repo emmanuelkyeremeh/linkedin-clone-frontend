@@ -1,5 +1,6 @@
 import styles from "../styles/feed.module.css";
 import FeedRightUser from "../components/FeedRightUser";
+import Image from "next/image";
 const FeedRight = () => {
   return (
     <aside className={styles.feedRightContainer}>
@@ -19,6 +20,11 @@ const FeedRight = () => {
         <p>John Ullmen</p>
         <h3>2. Executive Influence</h3>
         <p>Stacey Gordon</p>
+        <h3>3. Unconscious</h3>
+        <p>Pete Mockatis</p>
+      </section>
+      <section className={styles.feedRight_bottom}>
+        <Image src="/linkedin-advert-image.jpg" width="290" height="240" />
       </section>
     </aside>
   );

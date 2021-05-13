@@ -9,8 +9,14 @@ import RedoOutlinedIcon from "@material-ui/icons/RedoOutlined";
 import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 import MoreHorizOutlined from "@material-ui/icons/MoreHorizOutlined";
 import Link from "next/link";
+import moment from "moment";
 
 const Posts = () => {
+  const newDate = new Date();
+  const jsDate = `${newDate.getDate()}-${
+    newDate.getMonth() + 1
+  }-${newDate.getFullYear()} ${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`;
+  const date = moment(`${jsDate}`, "DD-MM-YYYY hh:mm:ss");
   return (
     <section className={styles.feedPostsContainer}>
       <section className={styles.feedPostsContainer_header}>
@@ -28,7 +34,7 @@ const Posts = () => {
               className={styles.feedPostsContainer_header_left_moment}
               fromNow
             >
-              Wed May 12 2021 17:43:25 GMT+0000
+              {date}
             </Moment>
           </section>
         </section>
@@ -88,7 +94,7 @@ const Posts = () => {
               fromNow
               ago
             >
-              Thu May 13 2021 12:48:18 GMT+0000
+              {date}
             </Moment>
             <MoreHorizOutlined />
           </section>
