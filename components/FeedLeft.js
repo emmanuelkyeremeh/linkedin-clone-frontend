@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Avatar } from "@material-ui/core";
 import CallToActionIcon from "@material-ui/icons/CallToAction";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
+import FeedBottomHash from "../components/FeedBottomHash";
 
 const FeedLeft = () => {
   return (
@@ -40,7 +41,19 @@ const FeedLeft = () => {
           <p>My Items</p>
         </section>
       </section>
-      <section className={styles.feedLeftBottom}></section>
+      <section className={styles.feedLeftBottom}>
+        <h3>Recent</h3>
+        <FeedBottomHash text="lifestyle" />
+        <FeedBottomHash text="culture" />
+        <FeedBottomHash text="food" />
+        <FeedBottomHash text="job" />
+        <FeedBottomHash text="clothing" />
+        <h3>Events</h3>
+        <FeedBottomHash text="sports" />
+        <FeedBottomHash text="activity" />
+        <FeedBottomHash text="nodejs" />
+        <FeedBottomHash text="react.js" />
+      </section>
     </aside>
   );
 };

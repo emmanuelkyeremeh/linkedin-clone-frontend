@@ -29,27 +29,33 @@ const FeedNav = () => {
       </div>
       <div className={styles.feedNav_IconContainer}>
         <FeedNavIcon
-          Icon={<HomeIcon style={{ fontSize: "1.5rem" }} />}
+          Icon={<HomeIcon style={{ fontSize: "1.5rem", color: "gray" }} />}
           text="Home"
           OptionalIcon={null}
         />
         <FeedNavIcon
-          Icon={<PeopleAltIcon style={{ fontSize: "1.5rem" }} />}
+          Icon={<PeopleAltIcon style={{ fontSize: "1.5rem", color: "gray" }} />}
           text="My Network"
           OptionalIcon={null}
         />
         <FeedNavIcon
-          Icon={<WorkIcon style={{ fontSize: "1.5rem" }} />}
+          Icon={<WorkIcon style={{ fontSize: "1.5rem", color: "gray" }} />}
           text="Jobs"
           OptionalIcon={null}
         />
         <FeedNavIcon
-          Icon={<ChatRoundedIcon style={{ fontSize: "1.5rem" }} />}
+          Icon={
+            <ChatRoundedIcon style={{ fontSize: "1.5rem", color: "gray" }} />
+          }
           text="Messaging"
           OptionalIcon={null}
         />
         <FeedNavIcon
-          Icon={<NotificationsActiveIcon style={{ fontSize: "1.5rem" }} />}
+          Icon={
+            <NotificationsActiveIcon
+              style={{ fontSize: "1.5rem", color: "gray" }}
+            />
+          }
           text="Notifications"
           OptionalIcon={null}
         />
@@ -59,12 +65,12 @@ const FeedNav = () => {
           OptionalIcon={<ArrowDropDownIcon />}
         />
         <FeedNavIcon
-          Icon={<MenuIcon style={{ fontSize: "1.5rem" }} />}
+          Icon={<MenuIcon style={{ fontSize: "1.5rem", color: "gray" }} />}
           text="Work"
           OptionalIcon={<ArrowDropDownIcon />}
         />
         <FeedNavIcon
-          Icon={<LocalMallIcon style={{ fontSize: "1.5rem" }} />}
+          Icon={<LocalMallIcon style={{ fontSize: "1.5rem", color: "gray" }} />}
           text="Post a Job"
           OptionalIcon={null}
         />

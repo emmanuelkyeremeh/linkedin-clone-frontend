@@ -1,6 +1,7 @@
 .feedContainer {
   background-color: rgb(240, 235, 235);
   min-height: 100vh;
+  --border-color: rgb(224, 223, 223);
 }
 .feedNavContainer {
   display: flex;
@@ -44,6 +45,7 @@
 }
 .feedNavIconContainer_text {
   font-size: 0.8rem;
+  color: gray;
   margin-top: -5px;
   display: flex;
   justify-content: center;
@@ -61,11 +63,12 @@
 
 .feedBody {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 3rem;
 }
 
-.feedLeftTop {
+.feedLeftTop,
+.feedLeftBottom {
   width: 200px;
   border-radius: 10px;
   background-color: white;
@@ -121,4 +124,112 @@
   margin-left: 0.5rem;
   font-size: 0.8rem;
   padding-bottom: 5px;
+}
+.feedLeftBottom {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  color: gray;
+}
+.feedLeftBottom h3 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: black;
+}
+.feedBottomHash {
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+}
+.feedBottomHash_hash {
+  font-weight: 900;
+  font-size: 1rem;
+}
+.feedBottomHash_text {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+.feedMiddleContainer_top {
+  width: 500px;
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+.feedMiddleContainer_top_upper {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.feedMiddleContainer_top_upper_text {
+  outline: none;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 10px;
+  width: 430px;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+.feedMiddleContainer_top_upper_text:focus {
+  outline: none;
+}
+.feedMiddleContainer_top_upper_text:hover {
+  background-color: rgb(233, 231, 231);
+}
+.feedNavTopUpperIcon {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  transition: 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.feedMiddleContainer_top_lower {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.6rem;
+  margin-top: 5px;
+}
+.feedNavTopUpperIcon_text {
+  margin-left: 5px;
+  color: gray;
+}
+.feedNavTopUpperIcon:hover {
+  background-color: rgb(216, 213, 213);
+}
+.feedPostsContainer {
+  width: 500px;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 1.5rem;
+}
+.feedPostsContainer_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.feedPostsContainer_header_left {
+  display: flex;
+}
+.feedPostsContainer_header_left_desc {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+.feedPostsContainer_header_left_name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.feedPostsContainer_header_left_bio {
+  font-size: 0.7rem;
+  color: gray;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 1rem;
+  width: 400px;
 }
