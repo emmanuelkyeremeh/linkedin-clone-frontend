@@ -2,6 +2,7 @@
   background-color: rgb(240, 235, 235);
   min-height: 100vh;
   --border-color: rgb(224, 223, 223);
+  --linkedin-blue: #2867b2;
 }
 .feedNavContainer {
   display: flex;
@@ -150,6 +151,9 @@
   font-size: 0.8rem;
   margin-left: 0.5rem;
 }
+.feedMiddleContainer {
+  margin-left: 1rem;
+}
 .feedMiddleContainer_top {
   width: 500px;
   background-color: white;
@@ -232,4 +236,138 @@
   text-overflow: ellipsis;
   height: 1rem;
   width: 400px;
+}
+.FeedPostReaction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-right: 5px;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+.FeedPostReaction_text {
+  margin-left: 5px;
+  color: rgb(97, 96, 96);
+}
+.FeedPostReaction:hover {
+  background-color: rgb(223, 219, 219);
+}
+.feedPostsContainer_reaction {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px;
+}
+.feedPostsBottom_text {
+  outline: none;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 10px;
+  width: 430px;
+  margin-left: 10px;
+}
+.feedPostsBottom_text:focus {
+  outline: 0;
+}
+.feedPostsCommentContainer {
+  display: flex;
+  margin-top: 1rem;
+  padding: 5px;
+}
+.feedPostsComment {
+  display: flex;
+  margin-left: 10px;
+  background-color: rgb(233, 232, 232);
+  padding: 5px;
+  border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.feedPostsComment_right {
+  display: flex;
+  align-items: center;
+}
+.feedPostsComment_left_title {
+  font-size: 0.8rem;
+}
+.feedPostsComment_left_title:hover {
+  text-decoration: underline;
+  color: var(--linkedin-blue);
+}
+.feedPostsComment_left_bio {
+  font-size: 0.6rem;
+  color: gray;
+  height: 1rem;
+  width: 370px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.feedPostsComment_left_comment {
+  font-size: 0.9rem;
+}
+.feedPostsComment_right_moment {
+  font-size: 0.6rem;
+}
+.feedRightContainer {
+  margin-left: 1rem;
+}
+.feedRight_top {
+  width: 300px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  height: 300px;
+}
+.feedRight_top_header {
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 5px;
+}
+.feedRightUserContainer {
+  display: flex;
+}
+.feedRightUser_body {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5rem;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.feedRightUser_name {
+  font-size: 0.8rem;
+}
+.FeedRightUser_bio {
+  font-size: 0.7rem;
+  color: gray;
+  white-space: nowrap;
+  height: 1rem;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.FeedRightUser_button {
+  background: transparent;
+  color: var(--linkedin-blue);
+  border-radius: 25px;
+  padding: 5px;
+  font-size: 0.8rem;
+  border: 1px solid var(--linkedin-blue);
+  font-weight: 600;
+  margin-top: 5px;
+  outline: 0;
+  transition: 0.1s;
+}
+.FeedRightUser_button:focus {
+  outline: 0;
+}
+.FeedRightUser_button:hover {
+  background: rgb(204, 218, 247);
+  border: 2px solid var(--linkedin-blue);
 }
