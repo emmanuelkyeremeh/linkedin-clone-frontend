@@ -1,5 +1,6 @@
 import styles from "../styles/feed.module.css";
 import { Avatar } from "@material-ui/core";
+import { useState } from "react";
 import Moment from "react-moment";
 import Image from "next/image";
 import FeedPostReaction from "../components/FeedPostReaction";
@@ -10,6 +11,7 @@ import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 import MoreHorizOutlined from "@material-ui/icons/MoreHorizOutlined";
 import Link from "next/link";
 import moment from "moment";
+import Modal from "../components/ViewPostModal";
 
 const Posts = () => {
   const newDate = new Date();
@@ -17,6 +19,10 @@ const Posts = () => {
     newDate.getMonth() + 1
   }-${newDate.getFullYear()} ${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`;
   const date = moment(`${jsDate}`, "DD-MM-YYYY hh:mm:ss");
+  const [open, setopen] = useState(true);
+  const handleClose = () => {
+    setopen(false);
+  };
   return (
     <section className={styles.feedPostsContainer}>
       <section className={styles.feedPostsContainer_header}>
@@ -100,6 +106,7 @@ const Posts = () => {
           </section>
         </section>
       </section>
+      <Modal open={open} handleClose={handleClose} />
     </section>
   );
 };
