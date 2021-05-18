@@ -19,7 +19,7 @@ const Posts = () => {
     newDate.getMonth() + 1
   }-${newDate.getFullYear()} ${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`;
   const date = moment(`${jsDate}`, "DD-MM-YYYY hh:mm:ss");
-  const [open, setopen] = useState(true);
+  const [open, setopen] = useState(false);
   const handleClose = () => {
     setopen(false);
   };

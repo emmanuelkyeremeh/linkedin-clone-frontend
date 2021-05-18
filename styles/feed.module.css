@@ -301,7 +301,7 @@
   font-size: 0.6rem;
   color: gray;
   height: 1rem;
-  width: 370px;
+  width: 200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -405,6 +405,7 @@
 }
 .viewPostModal {
   border: none !important;
+  border-radius: 20px !important;
 }
 .viewPostModal_container {
   position: absolute;
@@ -412,9 +413,67 @@
   outline: none;
   display: flex;
   width: 80%;
-  height: 70%;
+  height: 500px;
+}
+.viewPostModal_left {
+  flex: 1;
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
 }
 .viewPostModal_right {
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 400px;
+  padding: 20px;
+}
+.viewPostModal_right_top_container {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.viewPostModal_right_top {
+  display: flex;
+}
+.viewPostModal_right_top_name {
+  font-size: 0.8rem;
+}
+.viewPostModal_right_top_bio {
+  font-size: 0.6rem;
+  color: gray;
+  height: 1rem;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.viewPostModal_right_top_date {
+  margin-top: -10px;
+}
+.viewPostModal_right_top_right {
+  margin-left: 0.5rem;
+}
+.viewPostModal_right_caption {
+  color: gray;
+  padding: 5px;
+  font-size: 0.9rem;
+}
+.viewPostModal_right_reaction {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+.viewPostModal_right_hr {
+  background-color: rgb(224, 224, 224);
+  height: 1px;
+  border: none;
+}
+.viewPostModal_container_close_icon {
+  cursor: pointer;
 }
