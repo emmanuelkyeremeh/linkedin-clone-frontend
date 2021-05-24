@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { persistStore } from "redux-persist";
 import { persistReducer } from "redux-persist";
+import { signupReducer, loginReducer } from "./reducers/userReducer";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 
@@ -15,12 +16,15 @@ if (!ISSERVER) {
 }
 
 const initialState = {
-  Login: {
+  userLogin: {
     userDataLinkedin: userData,
   },
 };
 
-const reducer = combineReducers({});
+const reducer = combineReducers({
+  userSignup: signupReducer,
+  userLogin: loginReducer,
+});
 
 let store;
 
