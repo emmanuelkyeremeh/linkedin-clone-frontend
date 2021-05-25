@@ -14,12 +14,11 @@ import {
 export const uploadImage = (image) => async (dispatch) => {
   dispatch({ type: UPLOAD_IMAGE_REQUEST, payload: image });
   try {
-    const res = await axios.post("/api/file/", image, {
+    const res = await axios.post("http://localhost:4000/api/file/", image, {
       headers: {
         "content-type": "multipart/form-data",
       },
     });
-    console.log(res);
     dispatch({ type: UPLOAD_IMAGE_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({
@@ -35,7 +34,7 @@ export const uploadImage = (image) => async (dispatch) => {
 export const getSingleImage = (filename) => async (dispatch) => {
   dispatch({ type: GET_SINGLE_IMAGE_REQUEST, payload: filename });
   try {
-    const res = await axios.get(`/api/file/${filename}`);
+    const res = await axios.get(`http://localhost:4000/api/file/${filename}`);
     dispatch({ type: GET_SINGLE_IMAGE_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({
@@ -51,7 +50,9 @@ export const getSingleImage = (filename) => async (dispatch) => {
 export const deleteImage = (filename) => async (dispatch) => {
   dispatch({ type: DELETE_IMAGE_REQUEST, payload: filename });
   try {
-    const res = await axios.delete(`/api/file/${filename}`);
+    const res = await axios.delete(
+      `http://localhost:4000/api/file/${filename}`
+    );
     dispatch({ type: DELETE_IMAGE_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({

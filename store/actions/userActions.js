@@ -24,7 +24,7 @@ export const signup =
       },
     });
     try {
-      const res = await axios.post("/api/users/signup", {
+      const res = await axios.post("http://localhost:4000/api/users/signup", {
         firstName,
         lastName,
         avatar,
@@ -50,7 +50,10 @@ export const signup =
 export const login = (email, password) => async (dispatch) => {
   dispatch({ type: USER_LOGIN_REQUEST, payload: { email, password } });
   try {
-    const res = await axios.post("/api/users/login", { email, password });
+    const res = await axios.post("http://localhost:4000/api/users/login", {
+      email,
+      password,
+    });
     dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({

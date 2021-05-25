@@ -15,23 +15,25 @@ const signup = () => {
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState(null);
-  const [avatar_filename, setAvatar_filename] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const dispatch = useDispatch();
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    let avatar_filename = "";
     if (avatar) {
       const newAvatar = new File([avatar], `${uuid()}${avatar.name}`, {
         type: avatar.type,
       });
-      setAvatar_filename(newAvatar.name);
+      avatar_filename = newAvatar.name;
       const imageData = new FormData();
       imageData.append("image", newAvatar);
       await dispatch(uploadImage(imageData));
 
-      const actualAvatarData = await axios.get(`/api/file/${avatar_filename}`);
+      const actualAvatarData = await axios.get(
+        `http://localhost:4000/api/file/${avatar_filename}`
+      );
       actualAvatar = actualAvatarData.data;
     }
 
