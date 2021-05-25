@@ -3,8 +3,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signup as userSignup } from "../store/actions/userActions";
+import uuid from "react-uuid";
+import { uploadImage } from "../store/actions/imageActions";
 
 const signup = () => {
   const router = useRouter();
@@ -20,18 +22,16 @@ const signup = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    // let actualAvatar = "";
-    // let avatarName = "";
     if (avatar) {
       const newAvatar = new File([avatar], `${uuid()}${avatar.name}`, {
         type: avatar.type,
       });
       setAvatar_filename(newAvatar.name);
       const imageData = new FormData();
-      // imageData.append("image", newAvatar);
-      // await dispatch(uploadImage(imageData));
+      imageData.append("image", newAvatar);
+      await dispatch(uploadImage(imageData));
 
-      const actualAvatarData = await axios.get(`/api/image/${avatar_filename}`);
+      const actualAvatarData = await axios.get(`/api/file/${avatar_filename}`);
       actualAvatar = actualAvatarData.data;
     }
 
@@ -47,7 +47,7 @@ const signup = () => {
       )
     );
 
-    router.push("/");
+    // router.push("/feed");
   };
   return (
     <div className={styles.signupContainer}>
@@ -87,7 +87,6 @@ const signup = () => {
         <input
           type="file"
           className={styles.signupFileUpload}
-          value={avatar}
           onChange={(e) => setAvatar(e.target.files[0])}
         />
         <label>Email</label>

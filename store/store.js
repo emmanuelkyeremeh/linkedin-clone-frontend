@@ -5,6 +5,11 @@ import { persistReducer } from "redux-persist";
 import { signupReducer, loginReducer } from "./reducers/userReducer";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
+import {
+  deleteImageReducer,
+  getSingleImageReducer,
+  uploadImageReducer,
+} from "./reducers/imageReducer";
 
 let userData = "";
 
@@ -24,6 +29,9 @@ const initialState = {
 const reducer = combineReducers({
   userSignup: signupReducer,
   userLogin: loginReducer,
+  UploadImage: uploadImageReducer,
+  GetSingleImage: getSingleImageReducer,
+  DeleteImage: deleteImageReducer,
 });
 
 let store;

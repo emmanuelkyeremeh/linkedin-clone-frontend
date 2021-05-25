@@ -3,6 +3,9 @@ import Nav from "../components/LoginNav";
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../store/actions/userActions";
 
 const useStyles = makeStyles({
   root: {
@@ -13,6 +16,16 @@ const useStyles = makeStyles({
 });
 
 export default function Home() {
+  const [email, setemail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    dispatch(login(email, password));
+  };
+
   const classes = useStyles();
   return (
     <>
@@ -27,6 +40,9 @@ export default function Home() {
               id="outlined-basic"
               label="Email"
               variant="outlined"
+              name={email}
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
               className={classes.root}
               style={{ marginBottom: "20px", padding: "0px" }}
             />
@@ -34,6 +50,9 @@ export default function Home() {
               id="outlined-basic"
               label="Password"
               variant="outlined"
+              name={password}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className={classes.root}
               style={{ marginBottom: "20px", padding: "0px" }}
             />
