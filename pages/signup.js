@@ -29,6 +29,7 @@ const signup = () => {
         type: avatar.type,
       });
       avatar_filename = newAvatar.name;
+      console.log(avatar_filename);
       const imageData = new FormData();
       imageData.append("image", newAvatar);
       await dispatch(uploadImage(imageData));
@@ -45,9 +46,9 @@ const signup = () => {
       userSignup(
         firstName,
         lastName,
-        bio,
         avatar,
         avatar_filename,
+        bio,
         email,
         password
       )

@@ -6,11 +6,12 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import Posts from "../components/Posts";
-import { io } from "socket.io-client";
+import io from "socket.io-client";
 import { useEffect } from "react";
 
 const FeedMiddle = () => {
-  const socket = io("localhost:4000");
+  const socket = io("http://localhost:4000");
+
   useEffect(() => {
     socket.on("kepler", (res) => {
       console.log(res);
