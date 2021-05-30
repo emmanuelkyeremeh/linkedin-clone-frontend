@@ -65,3 +65,8 @@ export const login = (email, password) => async (dispatch) => {
     });
   }
 };
+
+export const usersignout = () => (dispatch) => {
+  localStorage.removeItem("userDataLinkedin");
+  dispatch({ type: USER_SIGNOUT });
+};

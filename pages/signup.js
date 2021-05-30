@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signup as userSignup } from "../store/actions/userActions";
 import uuid from "react-uuid";
 import { uploadImage } from "../store/actions/imageActions";
@@ -18,6 +18,8 @@ const signup = () => {
   const [avatar, setAvatar] = useState("");
 
   const dispatch = useDispatch();
+  const imageState = useSelector((state) => state.UploadImage);
+  const { error } = imageState;
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -31,10 +33,12 @@ const signup = () => {
       imageData.append("image", newAvatar);
       await dispatch(uploadImage(imageData));
 
-      const actualAvatarData = await axios.get(
-        `http://localhost:4000/api/file/${avatar_filename}`
-      );
-      actualAvatar = actualAvatarData.data;
+      if (!error) {
+        const actualAvatarData = await axios.get(
+          `http://localhost:4000/api/file/${avatar_filename}`
+        );
+        setAvatar(actualAvatarData.data);
+      }
     }
 
     await dispatch(
