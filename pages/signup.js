@@ -15,7 +15,7 @@ const signup = () => {
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
   const imageState = useSelector((state) => state.UploadImage);
@@ -24,12 +24,12 @@ const signup = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     let avatar_filename = "";
-    if (avatar) {
-      const newAvatar = new File([avatar], `${uuid()}${avatar.name}`, {
-        type: avatar.type,
+    let avatar = "";
+    if (image) {
+      const newAvatar = new File([image], `${uuid()}${image.name}`, {
+        type: image.type,
       });
       avatar_filename = newAvatar.name;
-      console.log(avatar_filename);
       const imageData = new FormData();
       imageData.append("image", newAvatar);
       await dispatch(uploadImage(imageData));
@@ -38,10 +38,10 @@ const signup = () => {
         const actualAvatarData = await axios.get(
           `http://localhost:4000/api/file/${avatar_filename}`
         );
-        setAvatar(actualAvatarData.data);
+        avatar = actualAvatarData.data;
+        console.log(avatar);
       }
     }
-
     await dispatch(
       userSignup(
         firstName,
@@ -94,7 +94,7 @@ const signup = () => {
         <input
           type="file"
           className={styles.signupFileUpload}
-          onChange={(e) => setAvatar(e.target.files[0])}
+          onChange={(e) => setImage(e.target.files[0])}
         />
         <label>Email</label>
         <input
