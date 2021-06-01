@@ -8,6 +8,7 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import Posts from "../components/Posts";
 import io from "socket.io-client";
 import { useEffect } from "react";
+import CreatePostModal from "./CreatePostModal";
 
 const FeedMiddle = () => {
   const socket = io("http://localhost:4000");
@@ -52,6 +53,7 @@ const FeedMiddle = () => {
       </header>
       <section className={styles.feedMiddleContainer_bottom}>
         <Posts />
+        <CreatePostModal />
       </section>
     </main>
   );
