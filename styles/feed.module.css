@@ -484,12 +484,12 @@
   position: absolute;
   background-color: white;
   outline: none;
-  display: flex;
   width: 500px;
-  height: 400px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border-radius: 10px;
 }
 .createPostModal_top {
   display: flex;
@@ -505,4 +505,77 @@
   border: none;
   height: 1px;
   background-color: rgb(218, 216, 216);
+}
+.createPostModal_middle {
+  display: flex;
+  flex-direction: column;
+}
+.createPostModal_user {
+  display: flex;
+  margin-top: 1rem;
+}
+.createPostModal_user_name {
+  margin-left: 5px;
+}
+.createPostModal_user_name h3 {
+  font-size: 1rem;
+}
+.createPostModal_user_button {
+  color: gray;
+  background: transparent;
+  border: 1px solid gray;
+  border-radius: 20px;
+  outline: none;
+  padding: 5px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.createPostModal_user_button p {
+  margin-left: 5px;
+}
+.createPostModal_user_button:focus {
+  outline: none;
+}
+.createPostModal_textarea {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  margin-top: 10px;
+  /* height: 4rem; */
+  outline: 0;
+}
+.createPostModal_textarea:focus {
+  outline: none;
+}
+.createPostModal_bottom {
+  margin-top: 2rem;
+  padding-bottom: 10px;
+}
+.createPostModal_bottom input::-webkit-file-upload-button {
+  display: none;
+}
+.createPostModal_bottom input::before {
+  content: "Upload an Image";
+  display: inline-block;
+  color: white;
+  background-color: #2867b2;
+  border: none;
+  margin-right: 5px;
+  border-radius: 20px;
+  user-select: none;
+  -webkit-user-select: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.createPostModal_bottom_button {
+  background-color: #2867b2;
+  border: none;
+  outline: 0;
+  padding: 10px 15px 10px 15px;
+  /*top,right,bottom,left*/
+  color: white;
+  border-radius: 25px;
 }

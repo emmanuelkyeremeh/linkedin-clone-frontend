@@ -1,13 +1,10 @@
 import Modal from "@material-ui/core/Modal";
-import { useState } from "react";
 import styles from "../styles/feed.module.css";
 import CloseIcon from "@material-ui/icons/Close";
+import { Avatar } from "@material-ui/core";
+import PublicIcon from "@material-ui/icons/Public";
 
-const CreatePostModal = () => {
-  const [open, setOpen] = useState(true);
-  const handleClose = () => {
-    setOpen(false);
-  };
+const CreatePostModal = ({ open, handleClose }) => {
   return (
     <Modal
       open={open}
@@ -26,6 +23,29 @@ const CreatePostModal = () => {
           />
         </section>
         <hr className={styles.createPostModal_hr} />
+        <section className={styles.createPostModal_middle}>
+          <section className={styles.createPostModal_user}>
+            <Avatar />
+            <section className={styles.createPostModal_user_name}>
+              <h3>Emmanuel Kyeremeh</h3>
+              <button className={styles.createPostModal_user_button}>
+                <PublicIcon /> <p>Anyone</p>
+              </button>
+            </section>
+          </section>
+          <textarea
+            type="text"
+            rows="7"
+            colums="20"
+            className={styles.createPostModal_textarea}
+            name=""
+            placeholder="What do you want to talk about?"
+          />
+        </section>
+        <section className={styles.createPostModal_bottom}>
+          <input type="file" />
+          <button className={styles.createPostModal_bottom_button}>Post</button>
+        </section>
       </section>
     </Modal>
   );

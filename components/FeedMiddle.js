@@ -7,7 +7,7 @@ import EventNoteIcon from "@material-ui/icons/EventNote";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import Posts from "../components/Posts";
 import io from "socket.io-client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CreatePostModal from "./CreatePostModal";
 
 const FeedMiddle = () => {
@@ -21,6 +21,10 @@ const FeedMiddle = () => {
       socket.off();
     };
   }, []);
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <main className={styles.feedMiddleContainer}>
       <header className={styles.feedMiddleContainer_top}>
@@ -30,6 +34,7 @@ const FeedMiddle = () => {
             type="text"
             placeholder="Start a Post"
             className={styles.feedMiddleContainer_top_upper_text}
+            onClick={() => setOpen(true)}
           />
         </section>
         <section className={styles.feedMiddleContainer_top_lower}>
@@ -53,7 +58,7 @@ const FeedMiddle = () => {
       </header>
       <section className={styles.feedMiddleContainer_bottom}>
         <Posts />
-        <CreatePostModal />
+        <CreatePostModal open={open} handleClose={handleClose} />
       </section>
     </main>
   );
