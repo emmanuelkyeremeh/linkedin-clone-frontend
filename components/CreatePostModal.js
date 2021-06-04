@@ -3,8 +3,69 @@ import styles from "../styles/feed.module.css";
 import CloseIcon from "@material-ui/icons/Close";
 import { Avatar } from "@material-ui/core";
 import PublicIcon from "@material-ui/icons/Public";
+import { socket } from "../ioUtils";
+import { useState, useEffect } from "react";
+import uuid from "react-uuid";
+import { useDispatch, useSelector } from "react-redux";
+import { uploadImage } from "../store/actions/imageActions";
+import axios from "axios";
 
 const CreatePostModal = ({ open, handleClose }) => {
+  useEffect(() => {
+    socket.on("createPostSuccess", (post) => {
+      console.log(post);
+    });
+    return () => {
+      socket.off();
+    };
+  }, []);
+  const imageData = useSelector((state) => state.UploadImage);
+  const { error } = imageData;
+  const loginData = useSelector((state) => state.userLogin);
+  const { userDataLinkedin } = loginData;
+  const [image, setimage] = useState("");
+  const [caption, setcaption] = useState("");
+
+  const newDate = new Date();
+  const time = `${newDate.getDate()}-${
+    newDate.getMonth() + 1
+  }-${newDate.getFullYear()} ${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`;
+
+  const userId = userDataLinkedin._id;
+
+  const dispatch = useDispatch();
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    let postImage = "";
+    let postImage_filename = "";
+
+    if (image) {
+      const newImage = new File([image], `${uuid()}${image.name}`, {
+        type: image.type,
+      });
+      postImage_filename = newImage.name;
+      const imageData = new FormData();
+      imageData.append("image", newImage);
+      await dispatch(uploadImage(imageData));
+
+      if (!error) {
+        const actualImageData = await axios.get(
+          `http://localhost:4000/api/file/${postImage_filename}`
+        );
+        postImage = actualImageData.data;
+      }
+    }
+    const Post = {
+      userId,
+      postImage,
+      postImage_filename,
+      time,
+      caption,
+    };
+    socket.emit("createPost", Post);
+  };
+
   return (
     <Modal
       open={open}
@@ -38,13 +99,20 @@ const CreatePostModal = ({ open, handleClose }) => {
             rows="7"
             colums="20"
             className={styles.createPostModal_textarea}
-            name=""
+            name={caption}
+            value={caption}
+            onChange={(e) => setcaption(e.target.value)}
             placeholder="What do you want to talk about?"
           />
         </section>
         <section className={styles.createPostModal_bottom}>
-          <input type="file" />
-          <button className={styles.createPostModal_bottom_button}>Post</button>
+          <input type="file" onChange={(e) => setimage(e.target.files[0])} />
+          <button
+            onClick={submitHandler}
+            className={styles.createPostModal_bottom_button}
+          >
+            Post
+          </button>
         </section>
       </section>
     </Modal>

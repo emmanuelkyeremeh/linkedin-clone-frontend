@@ -578,4 +578,5 @@
   /*top,right,bottom,left*/
   color: white;
   border-radius: 25px;
+  cursor: pointer;
 }
