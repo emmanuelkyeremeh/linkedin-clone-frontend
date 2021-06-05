@@ -11,9 +11,21 @@ import CreatePostModal from "./CreatePostModal";
 import { socket } from "../ioUtils";
 
 const FeedMiddle = () => {
+  const [AllPosts, setAllPosts] = useState([]);
   useEffect(() => {
-    socket.on("kepler", (res) => {
-      console.log(res);
+    socket.on("getPosts", (posts) => {
+      console.log(posts);
+      setAllPosts([...posts]);
+      console.log(AllPosts);
+    });
+    return () => {
+      socket.off();
+    };
+  }, []);
+  useEffect(() => {
+    socket.on("createPostSuccess", (newpost) => {
+      AllPosts.push(newpost);
+      console.log(AllPosts);
     });
     return () => {
       socket.off();
@@ -55,7 +67,18 @@ const FeedMiddle = () => {
         </section>
       </header>
       <section className={styles.feedMiddleContainer_bottom}>
-        <Posts />
+        {AllPosts
+          ? AllPosts.map((post) => (
+              <Posts
+                key={post._id}
+                caption={post.caption}
+                time={post.time}
+                image={post.image}
+                userid={post.userId}
+              />
+            ))
+          : null}
+
         <CreatePostModal open={open} handleClose={handleClose} />
       </section>
     </main>

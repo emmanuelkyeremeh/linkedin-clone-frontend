@@ -11,14 +11,6 @@ import { uploadImage } from "../store/actions/imageActions";
 import axios from "axios";
 
 const CreatePostModal = ({ open, handleClose }) => {
-  useEffect(() => {
-    socket.on("createPostSuccess", (post) => {
-      console.log(post);
-    });
-    return () => {
-      socket.off();
-    };
-  }, []);
   const imageData = useSelector((state) => state.UploadImage);
   const { error } = imageData;
   const loginData = useSelector((state) => state.userLogin);

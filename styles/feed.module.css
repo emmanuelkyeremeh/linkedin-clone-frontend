@@ -237,6 +237,9 @@
   height: 1rem;
   width: 400px;
 }
+.feedPostsContainer_caption {
+  padding: 5px;
+}
 .FeedPostReaction {
   display: flex;
   justify-content: center;

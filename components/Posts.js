@@ -13,12 +13,8 @@ import Link from "next/link";
 import moment from "moment";
 import Modal from "../components/ViewPostModal";
 
-const Posts = () => {
-  const newDate = new Date();
-  const jsDate = `${newDate.getDate()}-${
-    newDate.getMonth() + 1
-  }-${newDate.getFullYear()} ${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`;
-  const date = moment(`${jsDate}`, "DD-MM-YYYY hh:mm:ss");
+const Posts = ({ image, caption, time, userId }) => {
+  const date = moment(time, "DD-MM-YYYY hh:mm:ss");
   const [open, setopen] = useState(false);
   const handleClose = () => {
     setopen(false);
@@ -48,12 +44,16 @@ const Posts = () => {
           <MoreHorizOutlined />
         </section>
       </section>
-      <Image
-        className={styles.feedPostsContainer_image}
-        src="/2-25045_stephen-curry-wallpaper-photo-stephen-curry-wallpaper-desktop.jpg"
-        width="500"
-        height="500"
-      />
+      <section className={styles.feedPostsContainer_caption}>{caption}</section>
+      {image ? (
+        <Image
+          className={styles.feedPostsContainer_image}
+          src={`data:image/jpeg;base64,${image}`}
+          width="500"
+          height="500"
+        />
+      ) : null}
+
       <section className={styles.feedPostsContainer_reaction}>
         <FeedPostReaction
           Icon={<ThumbUpAltOutlinedIcon style={{ color: "gray" }} />}
