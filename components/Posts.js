@@ -11,13 +11,16 @@ import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 import MoreHorizOutlined from "@material-ui/icons/MoreHorizOutlined";
 import Link from "next/link";
 import moment from "moment";
-import Modal from "../components/ViewPostModal";
+import ViewPostModal from "../components/ViewPostModal";
 
 const Posts = ({ image, caption, time, userId }) => {
   const date = moment(time, "DD-MM-YYYY hh:mm:ss");
   const [open, setopen] = useState(false);
   const handleClose = () => {
     setopen(false);
+  };
+  const handleOpen = () => {
+    setopen(true);
   };
   return (
     <section className={styles.feedPostsContainer}>
@@ -49,6 +52,7 @@ const Posts = ({ image, caption, time, userId }) => {
         <Image
           className={styles.feedPostsContainer_image}
           src={`data:image/jpeg;base64,${image}`}
+          onClick={() => setopen(true)}
           width="500"
           height="500"
         />
@@ -106,7 +110,14 @@ const Posts = ({ image, caption, time, userId }) => {
           </section>
         </section>
       </section>
-      <Modal open={open} handleClose={handleClose} />
+      <ViewPostModal
+        open={open}
+        handleClose={handleClose}
+        image={image}
+        caption={caption}
+        time={time}
+        userId={userId}
+      />
     </section>
   );
 };

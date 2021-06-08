@@ -14,7 +14,7 @@ import SendRoundedIcon from "@material-ui/icons/SendRounded";
 import Link from "next/link";
 import MoreHorizOutlined from "@material-ui/icons/MoreHorizOutlined";
 
-const ViewPostModal = ({ open, handleClose }) => {
+const ViewPostModal = ({ open, handleClose, image, caption, time, userId }) => {
   function getModalStyle() {
     const top = 50;
     const left = 50;
@@ -27,11 +27,7 @@ const ViewPostModal = ({ open, handleClose }) => {
   }
   const [modalStyle] = useState(getModalStyle);
 
-  const newDate = new Date();
-  const jsDate = `${newDate.getDate()}-${
-    newDate.getMonth() + 1
-  }-${newDate.getFullYear()} ${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`;
-  const date = moment(`${jsDate}`, "DD-MM-YYYY hh:mm:ss");
+  const date = moment(time, "DD-MM-YYYY hh:mm:ss");
 
   return (
     <>
@@ -45,9 +41,10 @@ const ViewPostModal = ({ open, handleClose }) => {
         <section style={modalStyle} className={styles.viewPostModal_container}>
           <section className={styles.viewPostModal_left}>
             <Image
-              src="/2-25045_stephen-curry-wallpaper-photo-stephen-curry-wallpaper-desktop.jpg"
-              width="300"
-              height="500"
+              src={`data:image/jpeg;base64,${image}`}
+              className={styles.viewPostModal_left_image}
+              width="600"
+              height="900"
             />
           </section>
           <section className={styles.viewPostModal_right}>
@@ -81,7 +78,7 @@ const ViewPostModal = ({ open, handleClose }) => {
               </section>
             </section>
             <section className={styles.viewPostModal_right_caption}>
-              I love you guys very much!
+              {caption}
             </section>
             <hr className={styles.viewPostModal_right_hr} />
             <section className={styles.viewPostModal_right_reaction}>

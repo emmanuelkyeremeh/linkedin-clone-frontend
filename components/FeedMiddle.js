@@ -12,23 +12,17 @@ import { socket } from "../ioUtils";
 
 const FeedMiddle = () => {
   const [AllPosts, setAllPosts] = useState([]);
+
   useEffect(() => {
     socket.on("getPosts", (posts) => {
-      console.log(posts);
       setAllPosts([...posts]);
-      console.log(AllPosts);
     });
-    return () => {
-      socket.off();
-    };
-  }, []);
-  useEffect(() => {
     socket.on("createPostSuccess", (newpost) => {
-      AllPosts.push(newpost);
+      setAllPosts((prevPosts) => [newpost, ...prevPosts.reverse()]);
       console.log(AllPosts);
     });
     return () => {
-      socket.off();
+      socket.disconnect();
     };
   }, []);
   const [open, setOpen] = useState(false);
@@ -68,7 +62,7 @@ const FeedMiddle = () => {
       </header>
       <section className={styles.feedMiddleContainer_bottom}>
         {AllPosts
-          ? AllPosts.map((post) => (
+          ? AllPosts.reverse().map((post) => (
               <Posts
                 key={post._id}
                 caption={post.caption}

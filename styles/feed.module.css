@@ -425,6 +425,9 @@
   justify-content: center;
   align-items: center;
 }
+.viewPostModal_left_image {
+  object-fit: contain !important;
+}
 .viewPostModal_right {
   display: flex;
   flex-direction: column;
