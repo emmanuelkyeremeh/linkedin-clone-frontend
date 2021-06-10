@@ -1,0 +1,54 @@
+.messagingContainer {
+  --border-color: rgb(224, 223, 223);
+  --linkedin-blue: #2867b2;
+  min-height: 100vh;
+  background-color: rgb(240, 235, 235);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.messagingLeft {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  overflow-y: scroll;
+  border: 1px solid var(--border-color);
+  background-color: white;
+  border-top-left-radius: 20px;
+  width: 300px;
+}
+.messagingLeft_header {
+  font-weight: 600;
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+.messageUsersContainer {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+.messageUsers_right {
+  display: flex;
+  margin-left: 5px;
+}
+.messageUsers_rightLeft {
+  display: flex;
+  flex-direction: column;
+}
+.messageUsers_rightLeft_name {
+  font-weight: bold;
+  height: 1.2rem;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.messageUsers_rightLeft_text {
+  font-size: 0.9rem;
+  height: 1rem;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: gray;
+}
