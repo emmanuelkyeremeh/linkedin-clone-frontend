@@ -15,7 +15,7 @@
   border: 1px solid var(--border-color);
   background-color: white;
   border-top-left-radius: 20px;
-  width: 300px;
+  width: 400px;
 }
 .messagingLeft_header {
   font-weight: 600;
@@ -38,7 +38,7 @@
 .messageUsers_rightLeft_name {
   font-weight: bold;
   height: 1.2rem;
-  width: 150px;
+  width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -46,9 +46,63 @@
 .messageUsers_rightLeft_text {
   font-size: 0.9rem;
   height: 1rem;
-  width: 150px;
+  width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: gray;
+}
+.messagingRight_image_container {
+  width: 400px;
+  height: 400px;
+  border: 1px solid var(--border-color);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.messagingRight_messages_container {
+  width: 400px;
+  height: 400px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.messagingRight_image_message {
+  font-weight: 600;
+  text-align: center;
+}
+.messagingRight_messages_title {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+.messagingRight_messages_title_left {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.messagesContainer {
+  display: flex;
+}
+.message_body {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+.message_title {
+  display: flex;
+  align-items: center;
+}
+.message_header {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.message_timestamp {
+  font: 0.8rem gray;
+}
+.message_body {
+  font-size: 0.8rem;
 }
