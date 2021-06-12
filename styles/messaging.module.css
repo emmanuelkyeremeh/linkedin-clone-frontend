@@ -86,6 +86,7 @@
 }
 .messagesContainer {
   display: flex;
+  padding: 5px;
 }
 .message_body {
   display: flex;
@@ -105,4 +106,39 @@
 }
 .message_body {
   font-size: 0.8rem;
+}
+.messagingRight_messages_body {
+  height: 340px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.messagingRight_messages_inputContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+.messagingRight_messages_inputContainer_input {
+  border: none;
+  border-top: 1px solid green;
+  outline: 0;
+  padding: 5px;
+}
+.messagingRight_messages_inputContainer_input:focus {
+  outline: none;
+}
+.messagingRight_messages_inputContainer_button {
+  margin-left: auto;
+  margin-right: 0;
+  right: 0;
+  background-color: var(--linkedin-blue);
+  outline: 0;
+  padding: 5px;
+  border-radius: 20px;
+  color: white;
+  width: 50px;
+  border: none;
+  cursor: pointer;
+}
+.messagingRight_messages_inputContainer_button:focus {
+  outline: 0;
 }

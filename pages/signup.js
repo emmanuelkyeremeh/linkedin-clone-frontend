@@ -34,7 +34,7 @@ const signup = () => {
       imageData.append("image", newAvatar);
       await dispatch(uploadImage(imageData));
 
-      if (!error) {
+      if (error !== false) {
         const actualAvatarData = await axios.get(
           `http://localhost:4000/api/file/${avatar_filename}`
         );
@@ -54,7 +54,7 @@ const signup = () => {
       )
     );
 
-    // router.push("/feed");
+    router.push("/feed");
   };
   return (
     <div className={styles.signupContainer}>

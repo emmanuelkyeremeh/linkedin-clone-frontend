@@ -9,8 +9,17 @@ import Posts from "../components/Posts";
 import { useEffect, useState } from "react";
 import CreatePostModal from "./CreatePostModal";
 import { socket } from "../ioUtils";
+import { useDispatch } from "react-redux";
+import { usersignout } from "../store/actions/userActions";
+import { useRouter } from "next/router";
 
 const FeedMiddle = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const signoutHandler = async () => {
+    await dispatch(usersignout());
+    router.push("/signup");
+  };
   const [AllPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
@@ -33,7 +42,7 @@ const FeedMiddle = () => {
     <main className={styles.feedMiddleContainer}>
       <header className={styles.feedMiddleContainer_top}>
         <section className={styles.feedMiddleContainer_top_upper}>
-          <Avatar />
+          <Avatar onClick={signoutHandler} />
           <input
             type="text"
             placeholder="Start a Post"

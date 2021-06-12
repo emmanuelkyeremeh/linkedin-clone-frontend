@@ -24,7 +24,7 @@ const CreatePostModal = ({ open, handleClose }) => {
   }-${newDate.getFullYear()} ${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`;
 
   const userId = userDataLinkedin._id;
-
+  console.log(userId);
   const dispatch = useDispatch();
 
   const submitHandler = async (e) => {

@@ -24,6 +24,21 @@ const MessagingRight = () => {
         <section className={styles.messagingRight_messages_body}>
           <Messages />
         </section>
+        <section className={styles.messagingRight_messages_inputContainer}>
+          <textarea
+            className={styles.messagingRight_messages_inputContainer_input}
+            placeholder="Write Something"
+            name=""
+            id=""
+            cols="30"
+            rows="3"
+          ></textarea>
+          <button
+            className={styles.messagingRight_messages_inputContainer_button}
+          >
+            Post
+          </button>
+        </section>
       </section>
     </>
   );
