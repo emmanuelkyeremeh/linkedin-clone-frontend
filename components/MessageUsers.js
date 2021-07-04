@@ -1,8 +1,12 @@
 import styles from "../styles/messaging.module.css";
 import { Avatar } from "@material-ui/core";
+import { socket } from "../ioUtils";
 const MessageUsers = ({ firstName, lastName, id, avatar }) => {
+  const idSender = () => {
+    socket.emit("idProp", id);
+  };
   return (
-    <section className={styles.messageUsersContainer}>
+    <section className={styles.messageUsersContainer} onClick={idSender}>
       <section className={styles.messageUsers_avatar}>
         <Avatar src={`data:image/jpeg;base64,${avatar}`} />
       </section>

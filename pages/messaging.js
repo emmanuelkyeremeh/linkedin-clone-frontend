@@ -15,6 +15,12 @@ const messaging = () => {
     });
     return () => socket.disconnect();
   }, []);
+  useEffect(() => {
+    socket.on("idprop", (id) => {
+      setUserId(id);
+    });
+    return () => socket.disconnect();
+  }, []);
   return (
     <>
       <Nav />
@@ -30,7 +36,6 @@ const messaging = () => {
                     lastName={user.lastName}
                     id={user._id}
                     avatar={user.avatar}
-                    onClick={() => setUserId(user._id)}
                   />
                 ))
               : "loading users..."}

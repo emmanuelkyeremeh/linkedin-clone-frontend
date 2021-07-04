@@ -14,16 +14,45 @@ const MessagingRight = ({ id }) => {
     newDate.getMonth() + 1
   }-${newDate.getFullYear()} ${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`;
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState(null);
+  const [User, setUser] = useState(null);
+
+  const getMessages = () => {
+    const data = {
+      senderId: user._id,
+      receiverId: id && id,
+    };
+    socket.emit("messages", data);
+  };
+  const getSingleUser = () => {
+    if (id) {
+      socket.emit("singleUser", id);
+    }
+  };
 
   useEffect(() => {
-    socket.on("message recieved!", () => {
+    socket.on("saved!!!", () => {
       console.log("message recieved!!!!!!");
     });
+    return () => socket.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (id) {
+      getMessages();
+      getSingleUser();
+    }
+    socket.on("Messages", (messages) => {
+      setMessages([...messages]);
+    });
+    socket.on("SingleUser", (UserInfo) => {
+      setUser([...UserInfo]);
+    });
+    return () => socket.disconnect();
+  }, [id]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("submitted!");
     const newMessage = {
       avatar: user.avatar,
       firstName: user.firstName,
@@ -31,7 +60,7 @@ const MessagingRight = ({ id }) => {
       time: time,
       message: message,
       senderId: user._id,
-      receiverId: "60c5319df5f43e39582cdb3a",
+      receiverId: id && id,
     };
     socket.emit("newMessage", newMessage);
   };
@@ -48,14 +77,25 @@ const MessagingRight = ({ id }) => {
         <section className={styles.messagingRight_messages_container}>
           <section className={styles.messagingRight_messages_title}>
             <section className={styles.messagingRight_messages_title_left}>
-              Emmanuel Kepler
+              {User && User.firstName} {User && User.lastName}
             </section>
             <section className={styles.messagingRight_messages_title_right}>
               <MoreHorizIcon />
             </section>
           </section>
           <section className={styles.messagingRight_messages_body}>
-            <Messages />
+            {messages
+              ? messages.map((messages) => (
+                  <Messages
+                    key={messages._id}
+                    firstName={messages.firstName}
+                    lastName={messages.lastName}
+                    avatar={messages.avatar}
+                    time={messages.time}
+                    message={messages.message}
+                  />
+                ))
+              : "loading messages"}
           </section>
           <section className={styles.messagingRight_messages_inputContainer}>
             <textarea
