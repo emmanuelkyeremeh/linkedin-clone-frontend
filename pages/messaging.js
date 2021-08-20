@@ -3,8 +3,11 @@ import styles from "../styles/messaging.module.css";
 import MessagingRight from "../components/MessagingRight";
 import MessageUsers from "../components/MessageUsers";
 import { socket } from "../ioUtils";
+import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 const messaging = () => {
+  const LoggedUser = useSelector((state) => state.userLogin);
+  const { userDataLinkedin } = LoggedUser;
   const [users, setUsers] = useState(null);
   const [userId, setUserId] = useState(null);
 
@@ -18,6 +21,7 @@ const messaging = () => {
   useEffect(() => {
     socket.on("idprop", (id) => {
       setUserId(id);
+      console.log(id);
     });
     return () => socket.disconnect();
   }, []);
@@ -32,6 +36,11 @@ const messaging = () => {
               ? users.map((user) => (
                   <MessageUsers
                     key={user._id}
+                    className={
+                      userDataLinkedin && userDataLinkedin._id === user._id
+                        ? "DisplayNone"
+                        : ""
+                    }
                     firstName={user.firstName}
                     lastName={user.lastName}
                     id={user._id}
@@ -42,7 +51,7 @@ const messaging = () => {
           </section>
         </aside>
         <aside className={styles.messagingRight}>
-          <MessagingRight id={userId} />
+          <MessagingRight id={userId && userId} />
         </aside>
       </main>
     </>

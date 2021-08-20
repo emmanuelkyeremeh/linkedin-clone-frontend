@@ -143,3 +143,6 @@
 .messagingRight_messages_inputContainer_button:focus {
   outline: 0;
 }
+.DisplayNone {
+  display: none;
+}
