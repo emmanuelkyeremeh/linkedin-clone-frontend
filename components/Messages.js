@@ -8,12 +8,12 @@ const Messages = ({ avatar, firstName, lastName, time, message }) => {
       </section>
       <section className={styles.message_body}>
         <section className={styles.message_title}>
-          <p className={styles.message_header}>
+          <div className={styles.message_header}>
             {firstName} {lastName}
-          </p>
-          <p className={styles.message_timestamp}>{time}</p>
+          </div>
+          <div className={styles.message_timestamp}>{time.slice(9, 14)}</div>
         </section>
-        <section className={styles.message_body}>{message}</section>
+        <section className={styles.message_body_text}>{message}</section>
       </section>
     </section>
   );

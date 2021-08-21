@@ -96,6 +96,7 @@
 }
 .message_title {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 .message_header {
@@ -103,10 +104,18 @@
   font-size: 0.9rem;
 }
 .message_timestamp {
-  font: 0.8rem gray;
+  font: 0.8rem;
+  padding-top: 2px;
+  color: gray;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin-left: 0.5rem;
 }
 .message_body {
   font-size: 0.8rem;
+  margin-left: 0.5rem;
 }
 .messagingRight_messages_body {
   height: 340px;

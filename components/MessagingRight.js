@@ -2,7 +2,7 @@ import styles from "../styles/messaging.module.css";
 import Image from "next/image";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Messages from "../components/Messages";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { socket } from "../ioUtils.js";
 import { useState, useEffect } from "react";
 
@@ -17,18 +17,16 @@ const MessagingRight = ({ id }) => {
   const [messages, setMessages] = useState(null);
   const [User, setUser] = useState(null);
 
-  const getMessages = () => {
-    const data = {
-      senderId: user._id,
-      receiverId: id && id,
-    };
-    socket.emit("messages", data);
-  };
-  const getSingleUser = () => {
-    if (id) {
-      socket.emit("singleUser", id);
-    }
-  };
+  // const getMessages =  () => {
+  //   const data = {
+  //     senderId: user._id,
+  //     receiverId: id,
+  //   };
+  //   socket.emit("messages", data);
+  // };
+  // const getSingleUser = async () => {
+  //    socket.emit("singleUser", id);
+  // };
 
   useEffect(() => {
     socket.on("saved!!!", () => {
@@ -39,9 +37,20 @@ const MessagingRight = ({ id }) => {
 
   useEffect(() => {
     if (id) {
-      getMessages();
-      getSingleUser();
+      // getMessages();
+      // getSingleUser();
+      const data = {
+        senderId: user._id,
+        receiverId: id,
+      };
+      socket.emit("messages", data);
+      socket.emit("singleUser", id);
+
+      return () => socket.disconnect();
     }
+  }, [id]);
+
+  useEffect(() => {
     socket.on("Messages", (messages) => {
       setMessages([...messages]);
     });
@@ -49,7 +58,7 @@ const MessagingRight = ({ id }) => {
       setUser([...UserInfo]);
     });
     return () => socket.disconnect();
-  }, [id]);
+  }, []);
 
   const submitHandler = (e) => {
     e.preventDefault();

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../store/actions/userActions";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles({
   root: {
@@ -19,11 +20,14 @@ export default function Home() {
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const router = useRouter();
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
-    dispatch(login(email, password));
+    await dispatch(login(email, password));
+
+    router.push("/feed");
   };
 
   const classes = useStyles();
@@ -35,10 +39,11 @@ export default function Home() {
           <div className={styles.loginMain_text}>
             <h1>Welcome to your professional community</h1>
           </div>
-          <form className={styles.loginForm}>
+          <form className={styles.loginForm} onSubmit={submitHandler}>
             <TextField
               id="outlined-basic"
               label="Email"
+              type="email"
               variant="outlined"
               name={email}
               value={email}
@@ -50,6 +55,7 @@ export default function Home() {
               id="outlined-basic"
               label="Password"
               variant="outlined"
+              type="password"
               name={password}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
